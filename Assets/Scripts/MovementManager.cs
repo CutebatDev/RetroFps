@@ -9,8 +9,8 @@ public class MovementManager : MonoBehaviour
 
     public Dictionary<int, int> dayStepsDictionary = new Dictionary<int, int>() {
         // Day , Amount of Steps
-        {1 , 10},
-        {2 , 12},
+        {1 , 22},
+        {2 , 15},
         {3 , 8},
         {4 , 14},
     };
