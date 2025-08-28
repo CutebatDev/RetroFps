@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         // Very Important For Movement Snapping
-        transform.position = new Vector3(0,0.5f,0);
+        transform.position = new Vector3(0,1.0f,0);
         currentPosition = transform.position;
         
         movementManager = transform.GetComponent<MovementManager>();
