@@ -60,11 +60,16 @@ public class PlayerMovement : MonoBehaviour
             // Previous Version : 
             //rigidBody.MovePosition(newPosition);
 
-            transform.position = currentPosition;
+            if (GetMapPieceAtPosition(newPosition) != null) {
+                transform.position = currentPosition;
+                currentPosition = newPosition;
+                CheckForItem();
+            }
+            else {
+                // We can use MoveToPosition to animate wall collision
+                // We can also create a little message like in the video "ouch"
+            }
 
-            Debug.Log(GetMapPieceAtPosition(newPosition));
-            currentPosition = newPosition;
-            
             movementManager.currentStepsLeft--;
             UI.UpdateCounters();
         }
@@ -73,24 +78,44 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleRotation()
     {
+        Quaternion newRotation = new Quaternion();
         if (Input.GetKeyDown(KeyCode.A)) {
-            rigidBody.MoveRotation(rigidBody.rotation * Quaternion.Euler(Vector3.up * -90));
+            newRotation = rigidBody.rotation * Quaternion.Euler(Vector3.up * -90);
         }
         if (Input.GetKeyDown(KeyCode.D)) {
-            rigidBody.MoveRotation(rigidBody.rotation * Quaternion.Euler(Vector3.up * 90));
+            newRotation = rigidBody.rotation * Quaternion.Euler(Vector3.up * 90);
+        }
+
+        if (newRotation != new Quaternion()) {
+            rigidBody.MoveRotation(newRotation);
+            CheckForItem();
         }
     }
 
 
+    public void CheckForItem()
+    {
+        Vector3 checkPosition = transform.position + transform.forward * movementLengthIncrement;
+        if (GetMapPieceAtPosition(checkPosition) != null) {
+            GameObject checkObject = GetMapPieceAtPosition(checkPosition);
+            // Check for all the children of the object,
+            // If one of the children of the object has a Component of "Item" there is an item
+            // If there is an item -> do item logic
+        }
+    }
+    
+    
     public GameObject GetMapPieceAtPosition(Vector3 position)
     {
         for (int i = 0; i < mapPieces.transform.childCount; i++) {
-            Debug.Log(mapPieces.transform.GetChild(i).name + ":" + mapPieces.transform.GetChild(i).transform.position + ", for : " + position);
-            if ((int)mapPieces.transform.GetChild(i).transform.position.x == (int)position.x && (int)mapPieces.transform.GetChild(i).transform.position.z == (int)position.z) {
+            if ((int)mapPieces.transform.GetChild(i).transform.position.x == (int)position.x &&
+                (int)mapPieces.transform.GetChild(i).transform.position.z == (int)position.z) {
+                Debug.Log(mapPieces.transform.GetChild(i).name + ":" + mapPieces.transform.GetChild(i).transform.position + ", for : " + position);
                 return  mapPieces.transform.GetChild(i).transform.GetChild(0).gameObject;
             }
         }
 
+        Debug.Log("NO MAP PIECE FOUND AT : " + position.ToString());
         return null;
     }
     
