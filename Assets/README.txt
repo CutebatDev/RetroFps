@@ -22,15 +22,21 @@ Day 2:
 Other than that I've added a buncha stuff 
 Thanks for listening to my TED talk  
 
-Day (we counting irl days? i guess 3 than)
+Day (we counting irl days? i guess 3 than) - No not really just marked the time iv'e spent so you know what I did when
     
     In what resolution game supposed to be played? it kinda breaks with my janky pixel effect... works good now with 
-    vertical "phone" screen size, but if needed can be changed by tweaking 
+    vertical "phone" screen size, but if needed can be changed by tweaking - FIXED
     "Assets/OldSchoolEffect.renderTexture" size value. (set it to half/quarter of desired resolution)
     Offset was caused by "map" scale being 0.7. actual cells fit perfectly with unity 1 unit of measure, so their scale 
     should be ...2.0/1.0/0.5/0.25...
     We can add colliders to walls, and if player hits a wall he goes back to starting position, also can add "ouch" effect here
     I added water and fog! Water is a gameObject inside of the scene, and fog is a unity thingy 
-    (to turn off fog : Ctrl+9 -> Enviroment -> Fog (toggle off))
+    (to turn off fog : Ctrl+9 -> Enviroment -> Fog (toggle off)) - The fog is really cool
+    
+
+ : 
+    Do you know if there is a way to make the UV's on the wall texture "Global" so they are seamless between the different pieces
+    Walk forward once and turn backwards to see the item I added
+
     
     
