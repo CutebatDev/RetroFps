@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float movementLengthIncrement = 2.0f; // Dependent On The size of the map pieces themselves
     public Vector3 currentPosition;
     public float distanceToPointThreshold = 0.1f;
+    public float distanceToConsiderMapPiece = 0.4f;
     public float moveSpeed = 20.0f;
     
 
@@ -108,16 +109,33 @@ public class PlayerMovement : MonoBehaviour
     
     public GameObject GetMapPieceAtPosition(Vector3 position)
     {
-        for (int i = 0; i < mapPieces.transform.childCount; i++) {
-            if ((int)mapPieces.transform.GetChild(i).transform.position.x == (int)position.x &&
-                (int)mapPieces.transform.GetChild(i).transform.position.z == (int)position.z) {
-                Debug.Log(mapPieces.transform.GetChild(i).name + ":" + mapPieces.transform.GetChild(i).transform.position + ", for : " + position);
-                return  mapPieces.transform.GetChild(i).transform.GetChild(0).gameObject;
+        for (int i = 0; i < mapPieces.transform.childCount; i++)
+        {
+            Transform childTransform = mapPieces.transform.GetChild(i).transform;
+            // if ((int)childTransform.position.x == (int)position.x &&
+            //     (int)childTransform.position.z == (int)position.z) {
+            if (Vec3DistanceNoHeight(childTransform.position,position) <= distanceToConsiderMapPiece){
+                return  childTransform.GetChild(0).gameObject;
             }
+            // Debug.Log($"{childTransform.name} : ({childTransform.position}) for : {position}");
+            // Debug.Log($"    {(int)childTransform.position.x} == {(int)position.x} : {(int)childTransform.position.x == (int)position.x} && " +
+            //           $"{(int)childTransform.position.z} == {(int)position.z} : {(int)childTransform.position.z == (int)position.z}");
         }
 
         Debug.Log("NO MAP PIECE FOUND AT : " + position.ToString());
         return null;
+    }
+
+
+    public float Vec3DistanceNoHeight(Vector3 p1, Vector3 p2)
+    {
+        // EXPENSIVE
+        //return Vector2.Distance(new Vector2(p1.x,p1.z), new Vector2(p2.x,p2.z));
+        
+        // CHEAPER I GUESS
+        float dx = p1.x - p2.x;
+        float dz = p1.z - p2.z;
+        return Mathf.Sqrt(dx * dx + dz * dz);
     }
     
 }
