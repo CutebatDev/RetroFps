@@ -39,4 +39,8 @@ Day (we counting irl days? i guess 3 than) - No not really just marked the time 
     Walk forward once and turn backwards to see the item I added
 
     
-    
+udp: Nope, never worked with 3d textures before. but it doesnt look bad?
+nice item :thumbsup:
+
+I changed skybox to pitchblack, it adds to the shadows, now if we do illumination inside they should look better (think torches)
+Also cleaned up code a bit, coz infinite logs were bothering me (apperantly "new Quaternions == new Quaternions" is false xdd)

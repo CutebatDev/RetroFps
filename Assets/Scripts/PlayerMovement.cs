@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleRotation()
     {
-        Quaternion newRotation = new Quaternion();
+        Quaternion? newRotation = null;
         if (Input.GetKeyDown(KeyCode.A)) {
             newRotation = rigidBody.rotation * Quaternion.Euler(Vector3.up * -90);
         }
@@ -86,8 +87,8 @@ public class PlayerMovement : MonoBehaviour
             newRotation = rigidBody.rotation * Quaternion.Euler(Vector3.up * 90);
         }
 
-        if (newRotation != new Quaternion()) {
-            rigidBody.MoveRotation(newRotation);
+        if (newRotation != null) {
+            rigidBody.MoveRotation((Quaternion)newRotation);
             CheckForItem();
         }
     }
@@ -96,8 +97,8 @@ public class PlayerMovement : MonoBehaviour
     public void CheckForItem()
     {
         Vector3 checkPosition = transform.position + transform.forward * movementLengthIncrement;
-        if (GetMapPieceAtPosition(checkPosition) != null) {
-            GameObject checkObject = GetMapPieceAtPosition(checkPosition);
+        GameObject checkObject = GetMapPieceAtPosition(checkPosition);
+        if (checkObject) {
             // Check for all the children of the object,
             // If one of the children of the object has a Component of "Item" there is an item
             // If there is an item -> do item logic
