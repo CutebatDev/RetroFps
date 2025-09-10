@@ -44,3 +44,12 @@ nice item :thumbsup:
 
 I changed skybox to pitchblack, it adds to the shadows, now if we do illumination inside they should look better (think torches)
 Also cleaned up code a bit, coz infinite logs were bothering me (apperantly "new Quaternions == new Quaternions" is false xdd)
+
+10-Sep
+
+Do we need health bar?
+If you move before movement animation finishes it consumes one step
+Item animation script was hard coded to (0, height, 0) position, fixed it
+Did you know that "GetMapPieceAtPosition()" returns "Marker" and not map piece?
+Added some stuff to item script, now you can pickup items, they are stored in inventory and displayed on UI
+*Maybe you will enocunter smth along the lines "all of the default materal textures are now wired "1", if you do - its wasnt me :eyes:"

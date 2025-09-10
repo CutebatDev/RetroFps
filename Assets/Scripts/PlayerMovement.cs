@@ -100,14 +100,17 @@ public class PlayerMovement : MonoBehaviour
         Vector3 checkPosition = transform.position + transform.forward * movementLengthIncrement;
         GameObject checkObject = GetMapPieceAtPosition(checkPosition);
         if (checkObject) {
-            // Check for all the children of the object,
-            // If one of the children of the object has a Component of "Item" there is an item
-            // If there is an item -> do item logic
+            if (checkObject.transform.GetComponentInChildren<Item>())
+            {
+                Debug.Log("Item Found");
+                // but do we need it? We can just check collision...
+                // can be usefull for "Hanging on wall" items, that need "interact" button
+            }
         }
     }
     
     
-    public GameObject GetMapPieceAtPosition(Vector3 position)
+    public GameObject GetMapPieceAtPosition(Vector3 position)  // THIS RETURNS MARKER!!!!
     {
         for (int i = 0; i < mapPieces.transform.childCount; i++)
         {
