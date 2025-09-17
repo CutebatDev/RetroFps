@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
     private Vector3 originalPosition;
     
     #region Animation Variables
-    public float heightOffset = 0.5f;
+    public float heightOffset = .5f;
     private float time = .0f;
     public float heightGlideScale = .2f;
     public float heightGlideSpeed = 1f;

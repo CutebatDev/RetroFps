@@ -12,16 +12,20 @@ public class PlayerMovement : MonoBehaviour
     public GameObject mapPieces;
     public float movementLengthIncrement = 2.0f; // Dependent On The size of the map pieces themselves
     public Vector3 currentPosition;
-    public float distanceToPointThreshold = 0.1f;
-    public float distanceToConsiderMapPiece = 0.4f;
+    public float distanceToPointThreshold = .1f;
+    public float distanceToConsiderMapPiece = .4f;
     public float moveSpeed = 20.0f;
+    public float rotationSpeed = 20.0f;
+    public float angleToConsiderRotated = .1f;
+    public Quaternion currentRotation;
     
-
+    
     void Start()
     {
         // Very Important For Movement Snapping
         transform.position = new Vector3(0,1.0f,0);
         currentPosition = transform.position;
+        currentRotation = transform.rotation;
         
         movementManager = transform.GetComponent<MovementManager>();
         rigidBody = GetComponent<Rigidbody>();
@@ -39,6 +43,15 @@ public class PlayerMovement : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, position, moveSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, position) <= distanceToPointThreshold) {
             transform.position = position;
+        }
+    }
+
+
+    void RotateTowards(Quaternion rotation)
+    {
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        if (Quaternion.Angle(transform.rotation, rotation) <= angleToConsiderRotated) {
+            transform.rotation = rotation;
         }
     }
     
@@ -80,16 +93,28 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleRotation()
     {
-        Quaternion? newRotation = null;
-        if (Input.GetKeyDown(KeyCode.A)) {
-            newRotation = rigidBody.rotation * Quaternion.Euler(Vector3.up * -90);
+        if (transform.rotation != currentRotation) {
+            RotateTowards(currentRotation);
+        }
+        
+        
+        float rotationDegrees = 0;
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            rotationDegrees = -90;
         }
         if (Input.GetKeyDown(KeyCode.D)) {
-            newRotation = rigidBody.rotation * Quaternion.Euler(Vector3.up * 90);
+            rotationDegrees = 90;
         }
 
-        if (newRotation != null) {
-            rigidBody.MoveRotation((Quaternion)newRotation);
+        if (rotationDegrees != .0f) {
+            Quaternion prevRotation = currentRotation;
+            Quaternion delta = Quaternion.AngleAxis(rotationDegrees, Vector3.up);
+
+            Quaternion resultRotation = prevRotation * delta; // <-- This is what transform.rotation would become
+
+            currentRotation = resultRotation;
+            //transform.Rotate(Vector3.up, rotationDegrees * -1);
             CheckForItem();
         }
     }

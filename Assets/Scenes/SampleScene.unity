@@ -3087,7 +3087,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170158032884380139, guid: 1da7c712968c6e5409303e1f6ae68064, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 8170158032884380139, guid: 1da7c712968c6e5409303e1f6ae68064, type: 3}
       propertyPath: m_LocalRotation.x
@@ -3095,15 +3095,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170158032884380139, guid: 1da7c712968c6e5409303e1f6ae68064, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170158032884380139, guid: 1da7c712968c6e5409303e1f6ae68064, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170158032884380139, guid: 1da7c712968c6e5409303e1f6ae68064, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8170158032884380139, guid: 1da7c712968c6e5409303e1f6ae68064, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -4634,6 +4634,9 @@ MonoBehaviour:
   distanceToPointThreshold: 0.1
   distanceToConsiderMapPiece: 0.1
   moveSpeed: 15
+  rotationSpeed: 20
+  angleToConsiderRotated: 0.1
+  currentRotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!54 &2025082291
 Rigidbody:
   m_ObjectHideFlags: 0
