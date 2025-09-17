@@ -42,7 +42,9 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position = Vector3.Lerp(transform.position, position, moveSpeed * Time.deltaTime);
         if (Vector3.Distance(transform.position, position) <= distanceToPointThreshold) {
-            transform.position = position;
+            // Possibly cause incorrect movement placement / incrementation
+            // PREVIOUSLY : transform.position = position
+            transform.position = new Vector3(MathF.Round(position.x),MathF.Round(position.y),MathF.Round(position.z));
         }
     }
 
