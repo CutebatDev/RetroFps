@@ -77,7 +77,16 @@ public class PlayerMovement : MonoBehaviour
             // Previous Version : 
             //rigidBody.MovePosition(newPosition);
 
-            if (GetMapPieceAtPosition(newPosition) != null) {
+            GameObject mapPiece = GetMapPieceAtPosition(newPosition);
+            if (mapPiece) { // check all mapPiece children for Door
+                foreach (Transform childTransform in mapPiece.transform)
+                {
+                    if (childTransform.CompareTag("Door"))
+                    {
+                        childTransform.GetComponent<Door>().TryOpen();
+                        return; // Add animations for opening or failed opening
+                    }
+                }
                 transform.position = currentPosition;
                 currentPosition = newPosition;
                 CheckForItem();
