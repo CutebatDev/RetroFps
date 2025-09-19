@@ -122,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorNumber: 1
+  doorOpenSound: {fileID: 8300000, guid: 1559f6b7096cd3a4496a3a0c058263ea, type: 3}

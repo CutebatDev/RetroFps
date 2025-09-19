@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float angleToConsiderRotated = .1f;
     public Quaternion currentRotation;
     
+    private AudioManager audioManager;
     
     void Start()
     {
@@ -29,6 +30,8 @@ public class PlayerMovement : MonoBehaviour
         
         movementManager = transform.GetComponent<MovementManager>();
         rigidBody = GetComponent<Rigidbody>();
+        
+        audioManager = AudioManager.Instance;
     }
     
     void Update()
@@ -66,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 newPosition = transform.position;
         if (Input.GetKeyDown(KeyCode.W)) {
+            audioManager.PlayRandomMoveSound(); // IF MOVEMENT SUCCESS
             newPosition = transform.position + transform.forward * movementLengthIncrement ; // remove movement length increment for previous version
         }
         
