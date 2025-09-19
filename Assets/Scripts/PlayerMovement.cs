@@ -11,12 +11,13 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject mapPieces;
     public float movementLengthIncrement = 2.0f; // Dependent On The size of the map pieces themselves
-    public Vector3 currentPosition;
     public float distanceToPointThreshold = .1f;
     public float distanceToConsiderMapPiece = .4f;
     public float moveSpeed = 20.0f;
     public float rotationSpeed = 20.0f;
     public float angleToConsiderRotated = .1f;
+    
+    public Vector3 currentPosition;
     public Quaternion currentRotation;
     
     
@@ -44,42 +45,55 @@ public class PlayerMovement : MonoBehaviour
         if (Vector3.Distance(transform.position, position) <= distanceToPointThreshold) {
             // Possibly cause incorrect movement placement / incrementation
             // PREVIOUSLY : transform.position = position
-            transform.position = new Vector3(MathF.Round(position.x),MathF.Round(position.y),MathF.Round(position.z));
+            transform.position = GetRoundedPosition(position);
         }
     }
 
 
-    void RotateTowards(Quaternion rotation)
-    {
-        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
-        if (Quaternion.Angle(transform.rotation, rotation) <= angleToConsiderRotated) {
-            transform.rotation = rotation;
-        }
-    }
     
     
     void HandleMovement()
     {
         if (transform.position != currentPosition) {
-            MoveToPosition(currentPosition);
+            MoveToPosition(currentPosition); 
         }
         
         Vector3 newPosition = transform.position;
         if (Input.GetKeyDown(KeyCode.W)) {
-            newPosition = transform.position + transform.forward * movementLengthIncrement ; // remove movement length increment for previous version
+            newPosition = transform.position + transform.forward * movementLengthIncrement ; 
         }
         
         if (newPosition != transform.position)
         {
-            if (movementManager.currentStepsLeft <= 0)
+            if (movementManager.currentStepsLeft <= 0) {
+                movementManager.NextDay();
                 return;
+            }
 
+<<<<<<< Updated upstream
             // Previous Version : 
             //rigidBody.MovePosition(newPosition);
 
             if (GetMapPieceAtPosition(newPosition) != null) {
+=======
+            if (transform.position != currentPosition) {
                 transform.position = currentPosition;
-                currentPosition = newPosition;
+                return;
+            }
+            
+            GameObject mapPiece = GetMapPieceAtPosition(newPosition);
+            if (mapPiece) { // check all mapPiece children for Door
+                foreach (Transform childTransform in mapPiece.transform)
+                {
+                    if (childTransform.CompareTag("Door"))
+                    {
+                        childTransform.GetComponent<Door>().TryOpen();
+                        return; // Add animations for opening or failed opening
+                    }
+                }
+>>>>>>> Stashed changes
+                transform.position = currentPosition;
+                currentPosition = GetRoundedPosition(newPosition);
                 CheckForItem();
             }
             else {
@@ -93,6 +107,14 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    
+    void RotateTowards(Quaternion rotation)
+    {
+        transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);
+        if (Quaternion.Angle(transform.rotation, rotation) <= angleToConsiderRotated) {
+            transform.rotation = rotation;
+        }
+    }
     void HandleRotation()
     {
         if (transform.rotation != currentRotation) {
@@ -166,6 +188,12 @@ public class PlayerMovement : MonoBehaviour
         float dx = p1.x - p2.x;
         float dz = p1.z - p2.z;
         return Mathf.Sqrt(dx * dx + dz * dz);
+    }
+
+
+    public Vector3 GetRoundedPosition(Vector3 position)
+    {
+        return new Vector3(MathF.Round(position.x), MathF.Round(position.y), MathF.Round(position.z));
     }
     
 }

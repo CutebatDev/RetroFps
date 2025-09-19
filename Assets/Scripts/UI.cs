@@ -10,6 +10,21 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI text;
     
     public Image[] inventorySlots;
+<<<<<<< Updated upstream
+=======
+    
+    private Animator animator;
+    public TextMeshProUGUI dayTextLabel;
+    public Image dayCounterAnimationImage;
+    
+    private void Start()
+    {
+        dayCounterAnimationImage.gameObject.SetActive(false);
+        animator = GetComponent<Animator>();
+        NextDay();
+        UpdateInventory();
+    }
+>>>>>>> Stashed changes
 
     public void UpdateInventory()
     {
@@ -25,5 +40,12 @@ public class UI : MonoBehaviour
     public void UpdateCounters()
     {
         text.text = "Day : " + movementManager.currentDay.ToString() + "\nStep : " + movementManager.currentStepsLeft.ToString();
+    }
+    
+    
+    public void NextDay()
+    {
+        dayTextLabel.text = "Day " + movementManager.currentDay.ToString();
+        animator.SetTrigger("Next Day");
     }
 }
