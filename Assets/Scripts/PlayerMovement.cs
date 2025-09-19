@@ -70,43 +70,40 @@ public class PlayerMovement : MonoBehaviour
                 return;
             }
 
-<<<<<<< Updated upstream
             // Previous Version : 
             //rigidBody.MovePosition(newPosition);
 
             if (GetMapPieceAtPosition(newPosition) != null) {
-=======
-            if (transform.position != currentPosition) {
-                transform.position = currentPosition;
-                return;
-            }
-            
-            GameObject mapPiece = GetMapPieceAtPosition(newPosition);
-            if (mapPiece) { // check all mapPiece children for Door
-                foreach (Transform childTransform in mapPiece.transform)
-                {
-                    if (childTransform.CompareTag("Door"))
-                    {
-                        childTransform.GetComponent<Door>().TryOpen();
-                        return; // Add animations for opening or failed opening
-                    }
+                if (transform.position != currentPosition) {
+                    transform.position = currentPosition;
+                    return;
                 }
->>>>>>> Stashed changes
-                transform.position = currentPosition;
-                currentPosition = GetRoundedPosition(newPosition);
-                CheckForItem();
-            }
-            else {
-                // We can use MoveToPosition to animate wall collision
-                // We can also create a little message like in the video "ouch"
+            
+                GameObject mapPiece = GetMapPieceAtPosition(newPosition);
+                if (mapPiece) { // check all mapPiece children for Door
+                    foreach (Transform childTransform in mapPiece.transform)
+                    {
+                        if (childTransform.CompareTag("Door"))
+                        {
+                            childTransform.GetComponent<Door>().TryOpen();
+                            return; // Add animations for opening or failed opening
+                        }
+                    }
+                    transform.position = currentPosition;
+                    currentPosition = GetRoundedPosition(newPosition);
+                    CheckForItem();
+                }
+                else {
+                    // We can use MoveToPosition to animate wall collision
+                    // We can also create a little message like in the video "ouch"
+                }
+
+                movementManager.currentStepsLeft--;
+                UI.UpdateCounters();
             }
 
-            movementManager.currentStepsLeft--;
-            UI.UpdateCounters();
         }
-
     }
-
     
     void RotateTowards(Quaternion rotation)
     {
@@ -144,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public void CheckForItem()
+    void CheckForItem()
     {
         Vector3 checkPosition = transform.position + transform.forward * movementLengthIncrement;
         GameObject checkObject = GetMapPieceAtPosition(checkPosition);
@@ -157,9 +154,9 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    
-    
-    public GameObject GetMapPieceAtPosition(Vector3 position)  // THIS RETURNS MARKER!!!!
+
+
+    GameObject GetMapPieceAtPosition(Vector3 position)  // THIS RETURNS MARKER!!!!
     {
         for (int i = 0; i < mapPieces.transform.childCount; i++)
         {
@@ -179,7 +176,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public float Vec3DistanceNoHeight(Vector3 p1, Vector3 p2)
+    float Vec3DistanceNoHeight(Vector3 p1, Vector3 p2)
     {
         // EXPENSIVE
         //return Vector2.Distance(new Vector2(p1.x,p1.z), new Vector2(p2.x,p2.z));
@@ -191,9 +188,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    public Vector3 GetRoundedPosition(Vector3 position)
+    Vector3 GetRoundedPosition(Vector3 position)
     {
         return new Vector3(MathF.Round(position.x), MathF.Round(position.y), MathF.Round(position.z));
     }
-    
 }

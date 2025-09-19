@@ -10,8 +10,6 @@ public class UI : MonoBehaviour
     public TextMeshProUGUI text;
     
     public Image[] inventorySlots;
-<<<<<<< Updated upstream
-=======
     
     private Animator animator;
     public TextMeshProUGUI dayTextLabel;
@@ -24,7 +22,6 @@ public class UI : MonoBehaviour
         NextDay();
         UpdateInventory();
     }
->>>>>>> Stashed changes
 
     public void UpdateInventory()
     {
