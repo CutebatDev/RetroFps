@@ -24,11 +24,6 @@ public class UI : MonoBehaviour
         UpdateInventory();
     }
 
-    private void Start()
-    {
-        UpdateInventory();
-    }
-
     public void UpdateInventory()
     {
         PlayerInventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();

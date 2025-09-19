@@ -63,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 newPosition = transform.position;
         if (Input.GetKeyDown(KeyCode.W)) {
-        	audioManager.PlayRandomMoveSound(); // IF MOVEMENT SUCCESS
             newPosition = transform.position + transform.forward * movementLengthIncrement ; 
         }
         
@@ -102,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
                     // We can also create a little message like in the video "ouch"
                 }
 
+        	    audioManager.PlayRandomMoveSound();
                 movementManager.currentStepsLeft--;
                 UI.UpdateCounters();
             }
