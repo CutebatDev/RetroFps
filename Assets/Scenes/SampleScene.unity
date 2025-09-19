@@ -3061,6 +3061,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e62261ac3e750fd46804b838042e6131, type: 3}
+    - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
       propertyPath: yDegreesClosed
       value: 0
       objectReference: {fileID: 0}

@@ -20,7 +20,7 @@ public class Door : MonoBehaviour
         PlayerInventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         if (inventory.HasItem(doorNumber))
         {
-            AudioManager.Instance.PlaySFXOneShot(doorOpenSound);
+            AudioManager.Instance.PlaySFXOneShot(doorOpenSound, 0.5f);
             inventory.RemoveItem(doorNumber);
             
             // TODO-hl
