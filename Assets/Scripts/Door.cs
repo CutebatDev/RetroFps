@@ -4,6 +4,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public int doorNumber;
+    public AudioClip doorOpenSound;
     
     [SerializeField] private GameObject doorObject;
     
@@ -17,6 +18,7 @@ public class Door : MonoBehaviour
         PlayerInventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         if (inventory.HasItem(doorNumber))
         {
+            AudioManager.Instance.PlaySFXOneShot(doorOpenSound);
             inventory.RemoveItem(doorNumber);
             
             // TODO-hl

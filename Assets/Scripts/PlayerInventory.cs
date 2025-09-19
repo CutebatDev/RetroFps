@@ -20,6 +20,22 @@ public class PlayerInventory : MonoBehaviour
             // "replace item" menu?
         }
     }
+    public void RemoveItem(int searchNumber)
+    {
+        if (_inventory[searchNumber-1] is not null)
+        {
+            Item removeItem = null;
+            foreach (Item item in _inventory)
+            {
+                if (item.ItemNumber == searchNumber)
+                    removeItem = item;
+            }
+            if(removeItem  is not null)
+                _inventory.Remove(removeItem);
+            UI.UpdateInventory();
+            Debug.Log("Item removed");
+        }
+    }
 
     // check if player has an item in inventory
     public bool HasItem(int searchNumber)

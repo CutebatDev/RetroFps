@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,6 +24,11 @@ public class UI : MonoBehaviour
         UpdateInventory();
     }
 
+    private void Start()
+    {
+        UpdateInventory();
+    }
+
     public void UpdateInventory()
     {
         PlayerInventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
@@ -30,8 +36,13 @@ public class UI : MonoBehaviour
         {
             if (i < inventory._inventory.Count)
             {
-                inventorySlots[i].sprite = Sprite.Create(inventory._inventory[i].image, new Rect(0, 0, inventory._inventory[i].image.width, inventory._inventory[i].image.height), new Vector2(0.5f, 0.5f));;
+                inventorySlots[i].sprite = Sprite.Create(inventory._inventory[i].image,
+                    new Rect(0, 0, inventory._inventory[i].image.width, inventory._inventory[i].image.height),
+                    new Vector2(0.5f, 0.5f));
+                ;
             }
+            else
+                inventorySlots[i].sprite = null;
         }
     }
     public void UpdateCounters()

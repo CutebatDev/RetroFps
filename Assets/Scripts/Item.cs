@@ -11,6 +11,8 @@ public class Item : MonoBehaviour
     public int ItemNumber; // temporary, maybe doors check for this?
     public Texture2D image;// can be changed to mesh if/when we do those
     
+    public AudioClip itemPickupSound;
+    
     // with this item can be placed anywhere on the map, and not be teleported to (0, y, 0)
     private Vector3 originalPosition;
     
@@ -49,6 +51,7 @@ public class Item : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            AudioManager.Instance.PlaySFXOneShot(itemPickupSound);
             playerInventory.AddItem(this);
             Destroy(gameObject);
         }

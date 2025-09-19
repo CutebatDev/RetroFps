@@ -53,3 +53,8 @@ Item animation script was hard coded to (0, height, 0) position, fixed it
 Did you know that "GetMapPieceAtPosition()" returns "Marker" and not map piece?
 Added some stuff to item script, now you can pickup items, they are stored in inventory and displayed on UI
 *Maybe you will enocunter smth along the lines "all of the default materal textures are now wired "1", if you do - its wasnt me :eyes:"
+
+We use animations?
+^ this has been answered
+
+Items and Doors are online! You assign int number to each, and key will open its corresponding door!
