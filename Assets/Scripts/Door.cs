@@ -17,16 +17,22 @@ public class Door : MonoBehaviour
     
     public void TryOpen()
     {
+        Debug.Log($"Trying to Open door #{doorNumber}");
         PlayerInventory inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
         if (inventory.HasItem(doorNumber))
         {
+            Debug.Log($"Successfully opened door #{doorNumber}");
             AudioManager.Instance.PlaySFXOneShot(doorOpenSound);
+            Debug.Log("Playing Audio");
             inventory.RemoveItem(doorNumber);
+            Debug.Log($"Removing item from inventory number #{doorNumber}");
             
             // TODO-hl
             // PLEASE LET ME KNOW IF THIS WORKS 
             // DONT WANT TO DESTROY THE OBJECT SO IT'S STILL VISIBLE
+            Debug.Log($"Setting the game object tag to Untagged");
             gameObject.tag = "Untagged"; // So player movement doesn't detect it anymore
+            Debug.Log("Starting Rotation");
             StartRotation();
             //Destroy(gameObject);
         }

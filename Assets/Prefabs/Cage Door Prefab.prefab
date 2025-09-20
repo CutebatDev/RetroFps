@@ -241,14 +241,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4e1c97a69d9b4344a7374c3abc06b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorNumber: 0
+  doorNumber: 1
   doorOpenSound: {fileID: 0}
   doorObject: {fileID: 1439516179405049689}
   isAnimating: 0
   openInOtherDirection: 0
   rotationSpeedDegreesPerSecond: 45
-  angleDegreesToConsiderClosed: 2
-  axis: {x: 0, y: 1, z: 0}
+  angleDegreesToConsiderClosed: 0.1
+  axis: {x: 0, y: 0, z: 1}
 --- !u!1 &8608777817066249826
 GameObject:
   m_ObjectHideFlags: 0
