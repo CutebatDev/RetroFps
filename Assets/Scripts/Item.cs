@@ -33,7 +33,7 @@ public class Item : MonoBehaviour
         originalPosition = transform.position;
         transform.position = new Vector3(originalPosition.x, heightOffset, originalPosition.z);
         
-        GetComponent<MeshRenderer>().sharedMaterials[0].mainTexture = image; // Change to "set mesh" if we have custom meshes
+        // GetComponent<MeshRenderer>().sharedMaterials[0].mainTexture = image; // Change to "set mesh" if we have custom meshes
     }
 
     void Update()
