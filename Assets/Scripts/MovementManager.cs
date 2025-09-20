@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using DefaultNamespace;
 
 public class MovementManager : MonoBehaviour
 {
@@ -9,12 +10,13 @@ public class MovementManager : MonoBehaviour
 
     public Dictionary<int, int> dayStepsDictionary = new Dictionary<int, int>() {
         // Day , Amount of Steps
-        {1 , 30},
-        {2 , 25},
-        {3 , 17},
-        {4 , 14},
-        {5 , 22},
-        {6 , 24},
+        {1 , 45},
+        {2 , 32},
+        {3 , 29},
+        {4 , 31},
+        {5 , 34},
+        {6 , 41},
+        {7, 45}
     };
     
     public UI UI;
@@ -23,6 +25,8 @@ public class MovementManager : MonoBehaviour
     private Quaternion initialPlayerRotation = Quaternion.identity;
 
     private PlayerMovement playerMovement;
+
+    public SceneHandler sceneHandler;
     
     void Start()
     {
@@ -39,6 +43,10 @@ public class MovementManager : MonoBehaviour
                 // Just used the same animation from the other project
         
         currentDay++;
+        if (!dayStepsDictionary.ContainsKey(currentDay)) {
+            sceneHandler.ChangeScene(CutsceneType.SlumberEnding);
+            return;
+        }
         playerMovement.currentPosition = initialPlayerPosition;
         transform.position = initialPlayerPosition;
         playerMovement.movementManager.playerMovement.movementManager.playerMovement.currentRotation = initialPlayerRotation;
