@@ -36,6 +36,10 @@ public class Door : MonoBehaviour
             StartRotation();
             //Destroy(gameObject);
         }
+        else
+        {
+            inventory.UI.InfoPopup($"The door has number {doorNumber} on its keylock");
+        }
     }
 
     private void StartRotation()
