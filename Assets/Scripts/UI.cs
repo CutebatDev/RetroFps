@@ -8,7 +8,9 @@ public class UI : MonoBehaviour
 
     public MovementManager movementManager;
     
-    public TextMeshProUGUI text;
+    public TextMeshProUGUI counterText;
+
+    public TextMeshProUGUI hintText;
     
     public Image[] inventorySlots;
     
@@ -35,14 +37,19 @@ public class UI : MonoBehaviour
                     new Rect(0, 0, inventory._inventory[i].image.width, inventory._inventory[i].image.height),
                     new Vector2(0.5f, 0.5f));
                 ;
+                inventorySlots[i].color = Color.white;
             }
             else
+            {
                 inventorySlots[i].sprite = null;
+                inventorySlots[i].color = Color.clear;
+            }
+            
         }
     }
     public void UpdateCounters()
     {
-        text.text = "Day : " + movementManager.currentDay.ToString() + "\nStep : " + movementManager.currentStepsLeft.ToString();
+        counterText.text = "Day : " + movementManager.currentDay.ToString() + "\nStep : " + movementManager.currentStepsLeft.ToString();
     }
     
     
@@ -50,5 +57,11 @@ public class UI : MonoBehaviour
     {
         dayTextLabel.text = "Day " + movementManager.currentDay.ToString();
         animator.SetTrigger("Next Day");
+    }
+
+    public void InfoPopup(string info)
+    {
+        hintText.text = info;
+        animator.SetTrigger("Info");
     }
 }

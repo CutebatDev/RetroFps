@@ -11,6 +11,7 @@ public class PlayerInventory : MonoBehaviour
     {
         _inventory.Add(addition);
         Debug.Log("Item added");
+        UI.InfoPopup($"Picked Up Key with number {addition.ItemNumber}");
         UI.UpdateInventory();
     }
     public void RemoveItem(int searchNumber)
@@ -22,9 +23,12 @@ public class PlayerInventory : MonoBehaviour
                 removeItem = item;
         }
         if(removeItem  is not null)
+        {
             _inventory.Remove(removeItem);
         UI.UpdateInventory();
         Debug.Log("Item removed");
+        UI.InfoPopup($"Used Key with number {searchNumber}");
+        }
     }
 
     // check if player has an item in inventory

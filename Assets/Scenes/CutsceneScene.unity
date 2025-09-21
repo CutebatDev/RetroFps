@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f0ff57b202f234997de9d41829167b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsPerCharacter: 0.8
+  secondsPerCharacter: 0.12
   introDialogue:
   - You awake one day from a deep slumber.
   - You do not remember the day before, nor who you are.
@@ -395,11 +395,22 @@ MonoBehaviour:
   - You are tired, you will not last long \nbefore succumbing to the somnia once
     more
   - Find the keys, open the doors,\nEscape
-  exitEndingDialogue: []
-  slumberEndingDialogue: []
+  exitEndingDialogue:
+  - You are suddenly hit with a rude awakening.\nYou found your way out of this prison.
+  - You remember the sky light, and the smell of the air.
+  - The sounds of flying birds and cool breeze\nis now your new accomplice.
+  - You are refreshed, your vision reaches far\nYou can return to the outside world.
+  - Remember who you are.
+  slumberEndingDialogue:
+  - Your feet crumble beneath you.
+  - You remember the pain of stagnation, and of insomnia.
+  - The slow and wet sounds of water dropping\nSuddenly fades away.
+  - You are tired, returning back to your old slumber.\nYou succumb to your sleep
+    once more.
+  - Release your goals, succumb to urges.\nSleep.
   currentDialogue: []
   text: {fileID: 780921104}
-  mainSceneName: 
+  mainSceneName: SampleScene
 --- !u!4 &1221525786
 Transform:
   m_ObjectHideFlags: 0
@@ -408,13 +419,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221525784}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.9613948, y: -0.047341246, z: -0, w: -0.27107015}
   m_LocalPosition: {x: 618.19995, y: 388.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -148.586, y: -1.7230225, z: 6.123001}
 --- !u!1 &1802516192
 GameObject:
   m_ObjectHideFlags: 0
