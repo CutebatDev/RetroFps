@@ -9,32 +9,22 @@ public class PlayerInventory : MonoBehaviour
 
     public void AddItem(Item addition)
     {
-        if (_inventory.Count < 5)
-        {
-            _inventory.Add(addition);
-            Debug.Log("Item added");
-            UI.UpdateInventory();
-        }
-        else
-        {
-            // "replace item" menu?
-        }
+        _inventory.Add(addition);
+        Debug.Log("Item added");
+        UI.UpdateInventory();
     }
     public void RemoveItem(int searchNumber)
     {
-        if (_inventory[searchNumber-1] is not null)
+        Item removeItem = null;
+        foreach (Item item in _inventory)
         {
-            Item removeItem = null;
-            foreach (Item item in _inventory)
-            {
-                if (item.ItemNumber == searchNumber)
-                    removeItem = item;
-            }
-            if(removeItem  is not null)
-                _inventory.Remove(removeItem);
-            UI.UpdateInventory();
-            Debug.Log("Item removed");
+            if (item.ItemNumber == searchNumber)
+                removeItem = item;
         }
+        if(removeItem  is not null)
+            _inventory.Remove(removeItem);
+        UI.UpdateInventory();
+        Debug.Log("Item removed");
     }
 
     // check if player has an item in inventory
