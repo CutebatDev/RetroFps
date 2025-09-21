@@ -1145,6 +1145,10 @@ PrefabInstance:
       propertyPath: doorNumber
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 686d58ab00ffd1a46b3dcd8e6dddad8d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3238,6 +3242,10 @@ PrefabInstance:
       propertyPath: doorNumber
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 686d58ab00ffd1a46b3dcd8e6dddad8d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5365,6 +5373,10 @@ PrefabInstance:
       propertyPath: doorNumber
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 686d58ab00ffd1a46b3dcd8e6dddad8d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7631,6 +7643,10 @@ PrefabInstance:
       propertyPath: doorNumber
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e62261ac3e750fd46804b838042e6131, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9730,6 +9746,10 @@ PrefabInstance:
       propertyPath: doorNumber
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e62261ac3e750fd46804b838042e6131, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10281,6 +10301,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TUTORIAL DOOR (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 686d58ab00ffd1a46b3dcd8e6dddad8d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14714,6 +14738,10 @@ PrefabInstance:
       propertyPath: doorNumber
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6294857786409300252, guid: 0a3dad6cfc6af9b4598d44aa172104ef, type: 3}
+      propertyPath: doorOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e62261ac3e750fd46804b838042e6131, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
