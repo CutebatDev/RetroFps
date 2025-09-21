@@ -22,7 +22,7 @@ public class Door : MonoBehaviour
         if (inventory.HasItem(doorNumber))
         {
             Debug.Log($"Successfully opened door #{doorNumber}");
-            AudioManager.Instance.PlaySFXOneShot(doorOpenSound);
+            AudioManager.Instance.PlaySFXOneShot(doorOpenSound, 0.5f);
             Debug.Log("Playing Audio");
             inventory.RemoveItem(doorNumber);
             Debug.Log($"Removing item from inventory number #{doorNumber}");
