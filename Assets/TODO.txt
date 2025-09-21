@@ -1,0 +1,61 @@
+Final Project Guidelines : [https://docs.google.com/document/d/1EGWArIic9JHZXcyLwgS09KcmMqyMsILG/edit]
+---------------------------
+    - Environment
+    - C# Scripts
+    - Animations
+    - Input 
+    - User Interface
+    - Audio
+        
+        
+Score Grading :
+---------------
+    - Visuals ( 30% )
+    - Gameplay ( 25% )
+    - Modularity ( 5% )
+    - User Interface ( 10% )
+    - Audio ( 10% )
+    - Stability ( 5% ) [ Runtime errors, compilations errors ... ]
+    - Organization & Readability ( 5% ) [ OF CODE - Comments, Meaningful Variable Names ... ]
+    - Creativity & Complexity ( 10% )
+
+
+What we have : 
+--------------
+    - Environment ( 50% ) [ Map Design + Puzzles + Item Placement ]
+    - C# Scripts ( 60-70% ) [ User Interface Items + Puzzles + Player Resetting + Intro & Ending ]
+    - Animations ( 100% ) [ We use code to animate ( items and the player & possibly later the environment (doors ...) ) using lerp & sin ]
+    - Input ( 75% ) [ Item pickup &  Inventory Usage ]
+    - User Interface ( 60% ) [ Item Usage + Better Visually ]
+    - Audio ( 0% ) [ We have 0 audio ]
+    
+    - Visuals ( 100% ) [ This will be by far the most visually outstanding game ]
+    - Gameplay ( 40% ) [ You don't really do anything (yet) except move around ]
+    - Modularity (80%) [ Prefabs & Reusable Code ]
+    - UI ( ?% )        [ I don't know what else will be needed except maybe better visuals ]
+    - Audio ( 0% )     [ No Audio ]
+    - Stability (100%) [ We have 0 Stability Issues ]
+    - Org & Read (90%) [ I'd say it's pretty good ]
+    - Creativity (75%) [ Our Game is very creative ]
+    
+
+TODO LIST : 
+-----------
+    - Design the Map
+    - Add Puzzles
+    - Add Items
+    - Have UI Read Items 
+    - Player Reset & New Day Animation
+    - Intro & Ending ( Optionally )
+    - Be able to pick up items & Use them through the UI
+    - Design better UI Visuals
+    - Add Audio
+
+
+ERRORS : 
+--------
+    - Map Pieces Occasionally Not Found ( Cause - Random ? )
+
+
+DONE : 
+-------
